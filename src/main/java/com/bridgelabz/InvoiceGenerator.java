@@ -7,13 +7,13 @@ public class InvoiceGenerator {
     private static final double MINIMUM_COST_PER_KILOMETER =10 ;
     private static final int COST_PER_TIME = 1;
     private static final double MINIMUM_FARE =5 ;
-    RideRepository rideRepository;
+    RideRepository rideRepository = new RideRepository();
     //Main method
     public static void main(String[] args) {
         System.out.println("Welcome to cab invoice generator");
     }
-    public InvoiceGenerator() {
-        this.rideRepository = new RideRepository();
+    public void setRideRepository(RideRepository rideRepository) {
+        this.rideRepository = rideRepository;
     }
     //Creating calculateFare method
     public double calculateFare(double distance, int time) {
@@ -31,13 +31,14 @@ public class InvoiceGenerator {
         }
         return new InvoiceSummary(rides.length, totalFare);
     }
-    //Creating calculateTotalFare method
-    public double calculateTotalFare(Ride[] rides) {
+    //Creating calculateFare method
+    public InvoiceSummary getTotalFare(Ride[] rides) {
         double totalFare = 0;
         for (Ride ride : rides) {
-            totalFare += this.calculateFare(ride.getDistance(), ride.getTime());
+            //calling calculateFare method here
+            totalFare += ride.cabRide.calculateCostOfRide(ride);
         }
-        return totalFare;
+        return new InvoiceSummary(rides.length, totalFare);
     }
     //Creating addRides method
     public void addRides(String userId, Ride[] rides)
@@ -46,7 +47,7 @@ public class InvoiceGenerator {
     }
     public InvoiceSummary getInvoiceSummary(String userId)
     {
-        return this.calculateFare(rideRepository.getRide(userId));
+        return this.getTotalFare(rideRepository.getRide(userId));
     }
 
 }
