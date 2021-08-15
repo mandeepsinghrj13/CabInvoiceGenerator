@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.InvoiceServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-15T12:16:40" hostname="DEEPSINGH" time="0.015">
+<testsuite name="com.bridgelabz.InvoiceServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-15T12:25:30" hostname="DEEPSINGH" time="0.009">
   <properties/>
-  <testcase name="whenGivenMultipleRidesShouldReturnTotalFare" classname="com.bridgelabz.InvoiceServiceTest" time="0.015"/>
-  <system-out><![CDATA[Total Fare = 30.0
+  <testcase name="WhenGivenMultipleRidesShouldReturnSizeAndAverageFare" classname="com.bridgelabz.InvoiceServiceTest" time="0.009"/>
+  <system-out><![CDATA[Total Fare = 1862.0
+Number of ride = 4
+Average Total Fare 465.5
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
